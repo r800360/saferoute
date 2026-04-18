@@ -1,0 +1,68 @@
+\documentclass[10pt,twocolumn,letterpaper]{article}
+
+\usepackage{cvpr}
+\usepackage{times}
+\usepackage{epsfig}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[pagebackref,breaklinks,colorlinks,allcolors=blue]{hyperref}
+
+\cvprfinalcopy % comment out for review-style version
+
+\def\cvprPaperID{****}
+\def\confName{CSE 252D}
+\def\confYear{2026}
+
+\begin{document}
+
+\title{SafeRoute: Agentic Hazard-Aware Urban Navigation in CARLA}
+
+\author{
+Rohan Sachdeva \quad Xinwei Mai \quad Pranav Prabu \quad Rathang Pandit \\
+University of California, San Diego \\
+{\tt\small \{rosachdeva, xinwei, pprabu, rpandit\}@ucsd.edu}
+}
+
+\maketitle
+
+\section{Problem}
+Autonomous driving in urban environments requires decision-making under uncertainty from pedestrians, occlusions, weather, and dynamic traffic. Classical perception--planning--control pipelines perform well in structured settings but can struggle in ambiguous or rapidly changing scenes.
+
+We study real-time, risk-aware urban navigation by designing an agentic system that interprets scenes, proposes actions, critiques its decisions, and adapts behavior within a simulated environment.
+
+\section{Motivation}
+Agentic AI systems emphasize reasoning, tool use, and iterative refinement rather than static prediction alone. Autonomous driving is a natural setting for this paradigm because navigation depends on both perception and uncertainty-aware decision-making.
+
+Rather than building a fully end-to-end driving system, we explore a modular multi-agent driving copilot that separates scene understanding, planning, safety evaluation, and execution. This structure improves interpretability and enables controlled experimentation with different components.
+
+\section{Background and Literature}
+We use the CARLA simulator, which provides realistic urban environments, dynamic actors, configurable weather, and multi-modal sensors such as RGB, depth, and LiDAR~\cite{dosovitskiy2017carla}. CARLA enables repeatable scenarios and access to environment state, making it suitable for prototyping navigation systems.
+
+Relevant prior work includes conditional imitation learning for end-to-end driving~\cite{codevilla2018conditional} and privileged-training approaches such as ``Learning by Cheating''~\cite{chen2019learning}. On the agentic side, frameworks such as LangGraph support graph-structured workflows with planning, critique, and tool invocation~\cite{langgraph}. We build on these ideas by introducing an agentic decision layer on top of simulator perception and control.
+
+\section{Approach}
+We design a multi-agent autonomous driving copilot in CARLA with four components:
+\begin{itemize}
+\setlength\itemsep{0em}
+\item \textbf{Perception Agent:} summarizes the scene from sensors and nearby actors.
+\item \textbf{Planning Agent:} proposes high-level actions such as continue, slow down, stop, or reroute.
+\item \textbf{Safety/Critic Agent:} evaluates risk, uncertainty, and consistency of proposed actions.
+\item \textbf{Execution Agent:} translates selected actions into simulator controls.
+\end{itemize}
+
+These agents interact through a structured LangGraph workflow, enabling iterative reasoning and modular tool use.
+
+\section{Expected Outcomes}
+We aim to develop a CARLA-based navigation prototype across a small set of urban scenarios with traffic and varying weather. We will provide qualitative rollouts, example decision traces, and basic metrics such as collision rate, route completion, and time-to-goal.
+
+\section{Scope and Feasibility}
+To keep the project manageable within seven weeks, we will rely on CARLA's built-in simulation and sensors, use lightweight or pretrained perception where appropriate, and focus on agent orchestration and hazard-aware decision-making rather than full-stack autonomy.
+
+{\small
+\vspace{-4pt}
+\bibliographystyle{ieeenat_fullname}
+\bibliography{refs}
+}
+
+\end{document}
