@@ -1,18 +1,3 @@
-# from typing import Any, Dict, List
-# from src.maps.map_ir import (
-#     build_route_graph,
-#     detect_hazards,
-#     annotate_edges_with_hazards,
-#     make_scene_state,
-# )
-
-
-# class PerceptionAgent:
-#     def observe(self, world: Any, ego_vehicle: Any, route_waypoints: List[Any]) -> Dict[str, Any]:
-#         nodes, edges = build_route_graph(route_waypoints)
-#         hazards = detect_hazards(world, ego_vehicle)
-#         edges = annotate_edges_with_hazards(nodes, edges, hazards)
-#         return make_scene_state(ego_vehicle, nodes, edges, hazards)
 import math
 import carla
 
