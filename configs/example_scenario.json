@@ -1,0 +1,26 @@
+{
+  "scenario_id": "example_urgent_occluded_pass",
+  "request": {
+    "text": "I am late and need to get to the destination ASAP in 7 minutes.",
+    "start": "spawn_0",
+    "goal": "spawn_20",
+    "deadline_min": 7.0,
+    "reason": "urgent meeting"
+  },
+  "route": {
+    "town": "Town04",
+    "start": "spawn_0",
+    "goal": "spawn_20",
+    "lane_type": "two_lane",
+    "length_m": 1000.0,
+    "speed_limit_mps": 13.4
+  },
+  "ego": {"speed_mps": 10.0, "accel_mps2": 1.0, "desired_speed_mps": 13.4},
+  "lead": {"distance_m": 24.0, "speed_mps": 5.2, "accel_mps2": 0.0},
+  "rear": {"distance_m": 32.0, "speed_mps": 12.5, "accel_mps2": 0.0},
+  "oncoming": {"distance_m": 105.0, "speed_mps": 12.0, "accel_mps2": 0.0},
+  "oncoming_gap_time_s": 6.0,
+  "occlusion": {"type": "parked_cars", "severity": 0.35, "sight_distance_m": 95.0},
+  "weather": {"rain": 0.1, "fog": 0.2, "sun_angle": 45.0},
+  "sensor": {"mode": "privileged", "noise_std_m": 0.25, "dropout_prob": 0.0}
+}

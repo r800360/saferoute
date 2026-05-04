@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=64", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "autopass-gen"
+version = "0.1.0"
+description = "Initial AutoPass-Gen prototype for scenario-generation evaluation of urgency-aware passing decisions."
+requires-python = ">=3.10"
+dependencies = [
+  "numpy>=1.24",
+  "pandas>=2.0",
+  "matplotlib>=3.7",
+  "pydantic>=2.0",
+  "typer>=0.9",
+  "rich>=13.0",
+]
+
+[project.optional-dependencies]
+carla = []
+dev = ["pytest>=7.0", "ruff>=0.5"]
+
+[project.scripts]
+autopass-gen = "autopass_gen.cli:app"
+
+[tool.ruff]
+line-length = 100
+
+[tool.setuptools.packages.find]
+include = ["autopass_gen*"]
+exclude = ["paper*", "configs*", "tests*", "runs*"]
